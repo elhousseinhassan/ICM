@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: #07adb0;
+            width: 400px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            box-shadow: 1px 1px 10px black;
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            /* background-color: #d5e057; */
+            box-shadow: 1px 1px 10px black;
+
+            position: relative;
+        }
+        .right img:first-child{
+            height: 300px;
+        }
+        label{
+            font-size: 18px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            background-color: white;
+            height: 40px;
+            border-radius: 5px;
+            color:  rgb(252, 202, 0);
+            text-shadow:1px 2px black;
+        }
+        input{
+            font-size: 18px;
+            padding:0 10px;
+           border: none;
+           outline: none;
+        }
+        button{
+           padding: 10px 20px;
+           font-size: 15px;
+           font-weight: 900;
+           border-radius: 5px;
+           background-color: rgb(252, 202, 0);
+        }
+        .right img:nth-child(2){
+            position: absolute;
+            height: 80%;
+            bottom:-6px;
+            transition: 1s;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <label for="weight">
+            Weight :
+            <input id="weight" type="text">
+        </label>
+        <label for="height">
+            Height :
+            <input id="height" type="text">
+        </label>
+        <button onclick="BMI()">Check BMI</button>
+    </div>
+    <div class="right"><img src="iconbg.png" ><img src="iconneedle-improved.png" id="needle" alt=""></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        var weight = document.querySelector("#weight")
+        var height = document.querySelector("#height")
+        var right = document.querySelector(".right")
+        var needle = document.querySelector("#needle")
+        
+        function BMI() {
+            var Ca_bmi = weight.value / (height.value * height.value)
+            // right.innerText = Ca_bmi
+            if(Ca_bmi < 16 ){
+                // right.innerHTML+="<br><h1>1Maigreur Severe</h1>"
+                needle.style.transform = "rotate(-90deg)"
+            }
+            if(Ca_bmi >= 16 &&  Ca_bmi < 17 ){
+                // right.innerHTML+="<br><h1>Minceur moderee</h>"
+                needle.style.transform = "rotate(-80deg)"
+            }
+            if(Ca_bmi >= 17 &&  Ca_bmi < 18.5 ){
+                // right.innerHTML+="<br><h1>Minceur legere</h1>"
+                needle.style.transform = "rotate(-70deg)"
+
+            }
+            if(Ca_bmi >= 18.5 &&  Ca_bmi < 25 ){
+                // right.innerHTML+="<br><h1>Normale</h1>"
+                needle.style.transform = "rotate(-50deg)"
+
+            }
+            if(Ca_bmi >= 25 &&  Ca_bmi < 30 ){
+                // right.innerHTML+="<br><h1>Surpoids</h1>"
+                needle.style.transform = "rotate(0deg)"
+            }
+            if(Ca_bmi >= 30 &&  Ca_bmi < 35 ){
+                // right.innerHTML+="<br><h1>Obesite Class 1</h1>"
+                needle.style.transform = "rotate(50deg)"
+            }
+            if(Ca_bmi >= 35 &&  Ca_bmi < 40 ){
+                // right.innerHTML+="<br><h1>Obesite Class 2</h1>"
+                needle.style.transform = "rotate(60deg)"
+            }
+            if(Ca_bmi >= 40 ){
+                // right.innerHTML+="<br><h1>Obesite Class 3</h1>"
+                needle.style.transform = "rotate(90deg)"
+            }
+        }
+    </script>
+</body>
+
+</html>
